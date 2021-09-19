@@ -30,10 +30,11 @@ cacheSolve <- function(x, ...) {
   if(!is.null(n)) {
     message("getting cached data")
     return(n)
-  }
-  data <- x$get()
-  n <- mean(data, ...)
-  x$setinverse(n)
-  n
+  }else{
+    data <- x$get()
+    n <- solve(data)
+    x$setinverse(n)
+    n
         ## Return a matrix that is the inverse of 'x'
+  }
 }
